@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Page 1 - Accueil</title>
+<style>
+:root {
+  --accent: #00c8ff;
+  --accent2: #ffb347;
+  --accent3: #c77dff;
+  --bg-gradient: linear-gradient(135deg, #0a192f, #003566 40%, #9a4dff 80%, #ffd6a5 120%);
+  --panel: rgba(255,255,255,0.08);
+  --text-main: #f1f5f9;
+  --text-muted: #cdd6f4;
+  --border: rgba(255,255,255,0.12);
+  font-family: "Poppins", "Segoe UI", sans-serif;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  background: var(--bg-gradient);
+  background-size: 400% 400%;
+  animation: bgShift 20s ease infinite;
+  overflow: hidden;
+}
+
+@keyframes bgShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.site {
+  max-width: 1100px;
+  margin: 28px auto;
+  background: var(--panel);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  grid-template-rows: 120px 1fr;
+  animation: fadeIn .8s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+
+header {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 28px;
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(90deg, rgba(0,60,120,0.85), rgba(0,180,255,0.3));
+  animation: headerGlow 6s ease-in-out infinite alternate;
+}
+
+@keyframes headerGlow {
+  from { box-shadow: 0 0 10px var(--accent); }
+  to { box-shadow: 0 0 25px var(--accent3); }
+}
+
+.logo-left img, .logo-right img {
+  height: 70px;
+  border-radius: 12px;
+  transition: transform .4s ease, box-shadow .4s ease;
+}
+.logo-left img:hover, .logo-right img:hover {
+  transform: scale(1.1) rotate(3deg);
+  box-shadow: 0 0 20px var(--accent);
+}
+
+.title h1 {
+  margin: 0;
+  font-size: 26px;
+  letter-spacing: 2px;
+  color: var(--accent2);
+  text-shadow: 0 0 12px rgba(255,179,71,0.7);
+  text-align: center;
+}
+
+/* Navigation */
+nav {
+  padding: 18px 12px;
+  border-right: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(0,50,100,0.9), rgba(0,180,255,0.1));
+  height: calc(100vh - 120px);
+  overflow-y: auto;
+}
+
+nav::-webkit-scrollbar { width: 8px; }
+nav::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.15);
+  border-radius: 8px;
+}
+
+.menu {
+  list-style: none;
+  padding: 0;
+  margin: 6px 0 0;
+}
+
+.menu li {
+  padding: 12px 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: var(--text-main);
+  font-weight: 600;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid transparent;
+  transition: all .35s ease;
+}
+
+.menu li:hover {
+  background: rgba(255,255,255,0.12);
+  border: 1px solid var(--accent);
+  transform: translateX(6px);
+  box-shadow: 0 0 12px var(--accent);
+}
+
+nav a { text-decoration: none; color: inherit; display: block; }
+
+/* Main content */
+main {
+  padding: 22px;
+  height: calc(100vh - 120px);
+  overflow-y: auto;
+  color: var(--text-main);
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(10px);
+}
+
+main::-webkit-scrollbar { width: 10px; }
+main::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--accent), var(--accent3));
+  border-radius: 6px;
+}
+
+/* Tables as floating cards */
+.wrap table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.wrap table:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0,200,255,0.35);
+}
+
+th, td {
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+  text-align: center;
+  color: var(--text-main);
+}
+
+th {
+  background: rgba(255,255,255,0.12);
+  font-weight: 700;
+}
+
+caption {
+  font-weight: 700;
+  padding: 10px 0;
+  color: var(--accent2);
+  text-shadow: 0 0 8px rgba(255,179,71,0.7);
+}
+
+/* Button style */
+.btn {
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(90deg, var(--accent3), var(--accent));
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 0 12px var(--accent3);
+  transition: all .3s ease;
+  text-decoration: none;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 18px var(--accent2);
+}
+
+@media(max-width:900px){
+  .site{grid-template-columns:1fr;}
+  nav{height:auto;border-right:none;border-bottom:1px solid var(--border);}
+  main{height:auto;}
+}
+</style>
+</head>
+
+<body>
+  <div class="site">
+    <header>
+      <div class="logo-left"><a href="https://www.gouv.bj/"><img src="Log/télécharger.webp" alt="logo"></a></div>
+      <div class="title"><h1>BIENVENUE SUR<br>MON SITE WEB</h1></div>
+      <div class="logo-right"><a href="https://pigier-benin.com/"><img src="Log/Pigier.jpg" alt="logo"></a></div>
+    </header>
+
+    <nav aria-label="menu principal">
+      <div style="font-size:13px;color:var(--text-muted);font-weight:700;margin-bottom:8px">Menu</div>
+      <ul class="menu">
+        <a href="Index.html"><li>Page 1</li></a>
+        <a href="Page2.html"><li>Page 2</li></a>
+        <a href="Page3.html"><li>Page 3</li></a>
+        <a href="Page4.html"><li>Page 4</li></a>
+        <a href="Page5.html"><li>Page 5</li></a>
+        <a href="formulaire.html"><li>Formulaire</li></a>
+      </ul>
+    </nav>
+
+    <main>
+      <div class="wrap">
+        <table><caption>RGL1</caption><tr><td>RGL2</td><td>RGL3</td></tr></table>
+        <table style="margin-top:8px"><tr><td rowspan="2">RMS1</td><td>RMS2</td></tr><tr><td>RMS3</td></tr></table>
+        <table style="margin-top:8px"><caption>A</caption><tr><td rowspan="2">B</td><td>C</td></tr><tr><td>D</td><td>E</td></tr></table>
+
+        <div style="margin-top:18px;text-align:center"><a class="btn" href="formulaire.html">Page suivante →</a></div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
